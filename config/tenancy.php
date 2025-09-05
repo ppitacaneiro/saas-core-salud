@@ -8,7 +8,6 @@ use Stancl\Tenancy\Database\Models\Tenant;
 return [
     'tenant_model' => \App\Models\Tenant::class,
     'id_generator' => Stancl\Tenancy\UUIDGenerator::class,
-
     'domain_model' => Domain::class,
 
     /**
@@ -16,10 +15,12 @@ return [
      *
      * Only relevant if you're using the domain or subdomain identification middleware.
      */
+
     'central_domains' => [
         '127.0.0.1',
         'localhost',
     ],
+    'base_domain' => env('TENANCY_BASE_DOMAIN', 'localhost'),
 
     /**
      * Tenancy bootstrappers are executed when tenancy is initialized.
@@ -51,7 +52,7 @@ return [
          * Tenant database names are created like this:
          * prefix + tenant_id + suffix.
          */
-        'prefix' => 'tenant',
+        'prefix' => 'tenant_',
         'suffix' => '',
 
         /**

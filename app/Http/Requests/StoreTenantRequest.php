@@ -23,7 +23,6 @@ class StoreTenantRequest extends FormRequest
     {
         return [
             'id' => 'required|string|unique:tenants,id',
-            'domain' => 'required|string|unique:domains,domain',
         ];
     }
 
@@ -33,9 +32,6 @@ class StoreTenantRequest extends FormRequest
             'id.required' => 'El ID del tenant es obligatorio.',
             'id.string' => 'El ID del tenant debe ser una cadena de texto.',
             'id.unique' => 'El ID del tenant ya existe.',
-            'domain.required' => 'El dominio es obligatorio.',
-            'domain.string' => 'El dominio debe ser una cadena de texto.',
-            'domain.unique' => 'El dominio ya está en uso.',
         ];
     }
 }

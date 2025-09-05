@@ -4,27 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Models\Tenant;
 use Illuminate\Http\Request;
+use App\Http\DTOs\TenantData;
+use App\Services\TenantService;
 use Illuminate\Support\Facades\Artisan;
+use App\Http\Requests\StoreTenantRequest;
 
 class TenantController extends Controller
 {
-    public function store(Request $request)
+    protected TenantService $service;
+
+    public function __construct(TenantService $service)
     {
-        $tenant = Tenant::create([
-            'id' => $request->input('id'),
-        ]);
+        $this->service = $service;
+    }
 
-        $tenant->domains()->create([
-            'domain' => $request->domain,
-        ]);
+    public function store(StoreTenantRequest $request)
+    {
+        $dto = TenantData::fromRequest($request->validated());
+        $tenant = $this->service->createTenant($dto);
 
-        $tenant->run(function () {
-            Artisan::call('migrate', [
-                '--path' => 'database/migrations/tenant',
-                '--force' => true
-            ]);
-        });
-
-        return response()->json($tenant);
+        return response()->json($tenant, 201);
     }
 }

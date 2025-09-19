@@ -36,7 +36,10 @@ class TenantService
                 ]);
             });
 
-            return $tenant;
+            return [
+                'id' => $tenant->id,
+                'domain' => $domain,
+            ];
         } catch (\App\Exceptions\TenantAlreadyExistsException $e) {
             throw $e;
         } catch (\Exception $e) {

@@ -8,7 +8,9 @@ Route::get('/status', function () {
     return response()->json(['status' => 'API is working']);
 });
 
-Route::post('/tenants', [TenantController::class, 'store']);
+Route::post('/tenants', [
+    TenantController::class, 'store']
+)->middleware('auth:sanctum');
 
 Route::get('/user', function (Request $request) {
     return $request->user();

@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Http\DTOs\LoginData;
+use App\Http\DTOs\RegisterData;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use App\Repositories\Interfaces\IUserRepository;
@@ -33,6 +34,17 @@ class AuthService
             'auth_token' => $token,
             'token_type' => 'Bearer'
         ];
+    }
+
+    public function register(RegisterData $dto)
+    {
+        $user = $this->userRepository->createUser([
+            'name' => $dto->name,
+            'email' => $dto->email,
+            'password' => Hash::make($dto->password),
+        ]);
+
+        return $user;
     }
 
     public function logout()

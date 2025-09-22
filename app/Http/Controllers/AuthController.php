@@ -28,11 +28,11 @@ class AuthController extends Controller
     public function register(RegisterRequest $request)
     {
         $registerData = RegisterData::fromRequest($request->validated());
-        // $user = $this->authService->register($registerData);
+        $user = $this->authService->register($registerData);
 
         return response()->json([
-            'message' => 'Registration successful',
-            // 'data' => $user (return user data if needed)
+            'message' => 'Usuario registrado con éxito',
+            'data' => $user
         ], 201);
     }
 }

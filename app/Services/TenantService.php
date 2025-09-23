@@ -29,11 +29,17 @@ class TenantService
             $domain = "{$tenant->id}.{$baseDomain}";
             $this->repository->addDomain($tenant, $domain);
 
-            $tenant->run(function () {
+            $tenant->run(function () use ($dto) {
                 Artisan::call('migrate', [
                     '--path' => 'database/migrations/tenant',
                     '--force' => true,
                 ]);
+
+                $seeder = new \Database\Seeders\Tenant\TenantDatabaseSeeder([
+                    'email' => $dto->adminEmail,
+                    'password' => $dto->adminPassword,
+                ]);
+                $seeder->run();
             });
 
             return [

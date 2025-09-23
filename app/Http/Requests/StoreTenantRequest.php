@@ -23,6 +23,8 @@ class StoreTenantRequest extends FormRequest
     {
         return [
             'id' => 'required|string|unique:tenants,id',
+            'admin_email' => 'required|email',
+            'admin_password' => 'required|string|min:8',
         ];
     }
 
@@ -32,6 +34,11 @@ class StoreTenantRequest extends FormRequest
             'id.required' => 'El ID del tenant es obligatorio.',
             'id.string' => 'El ID del tenant debe ser una cadena de texto.',
             'id.unique' => 'El ID del tenant ya existe.',
+            'admin_email.required' => 'El correo electrónico del administrador es obligatorio.',
+            'admin_email.email' => 'El correo electrónico del administrador debe ser una dirección de correo válida.',
+            'admin_password.required' => 'La contraseña del administrador es obligatoria.',
+            'admin_password.string' => 'La contraseña del administrador debe ser una cadena de texto.',
+            'admin_password.min' => 'La contraseña del administrador debe tener al menos 8 caracteres.',
         ];
     }
 }

@@ -6,7 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TenantController;
 
 Route::get('/status', function () {
-    return response()->json(['status' => 'API is working']);
+    return response()->json(['status' => 'API is working'], 200);
 });
 
 Route::post('/login', [AuthController::class, 'login']);

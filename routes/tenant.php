@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Tenant\PatientController;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 
@@ -31,7 +31,8 @@ Route::middleware([
 
     Route::post('/login', [AuthController::class, 'login']);
 
-    Route::get('/users', function () {
-        return response()->json(User::all(), 200);
-    })->middleware('auth:sanctum');
+    Route::prefix('patients')->middleware('auth:sanctum')->group(function () {
+        Route::get('/', [PatientController::class, 'index']);
+        Route::get('/paginate', [PatientController::class, 'paginate']);
+    });
 });

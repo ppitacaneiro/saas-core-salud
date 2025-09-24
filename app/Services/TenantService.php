@@ -37,6 +37,9 @@ class TenantService
         } catch (\App\Exceptions\TenantAlreadyExistsException $e) {
             throw $e;
         } catch (\Exception $e) {
+            if (isset($tenant)) {
+                event(new \App\Events\TenantCreationFailed($tenant->id));
+            }
             throw new \Exception("Error al crear el tenant: {$e->getMessage()}");
         }
     }

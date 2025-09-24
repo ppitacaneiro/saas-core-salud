@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Tenant;
+use Illuminate\Support\Facades\Log;
 use App\Repositories\Interfaces\ITenantRepository;
 
 class TenantRepository implements ITenantRepository
@@ -21,5 +22,11 @@ class TenantRepository implements ITenantRepository
     public function addDomain(Tenant $tenant, string $domain): void
     {
         $tenant->domains()->create(['domain' => $domain]);
+    }
+
+    public function delete(Tenant $tenant): void
+    {
+        $tenant->delete();
+        $tenant->domains()->delete();
     }
 }

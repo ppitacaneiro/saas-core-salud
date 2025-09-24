@@ -24,7 +24,7 @@ Route::middleware([
     InitializeTenancyByDomain::class,
     PreventAccessFromCentralDomains::class,
 ])->prefix('api')->group(function () {
-    Route::get('/status', function () {
+    Route::get('/tenant-status', function () {
         return response()->json(['status' => 'Tenant API is working'], 200);
     });
 });

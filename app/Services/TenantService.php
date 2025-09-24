@@ -28,19 +28,7 @@ class TenantService
             $tenant = $this->repository->createTenant($slug);
             $domain = "{$tenant->id}.{$baseDomain}";
             $this->repository->addDomain($tenant, $domain);
-
-            $tenant->run(function () use ($dto) {
-                Artisan::call('migrate', [
-                    '--path' => 'database/migrations/tenant',
-                    '--force' => true,
-                ]);
-
-                $seeder = new \Database\Seeders\Tenant\TenantDatabaseSeeder([
-                    'email' => $dto->adminEmail,
-                    'password' => $dto->adminPassword,
-                ]);
-                $seeder->run();
-            });
+            \App\Jobs\InitializeTenantJob::dispatch($dto, $tenant);
 
             return [
                 'id' => $tenant->id,

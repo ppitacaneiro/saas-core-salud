@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 use Stancl\Tenancy\Middleware\InitializeTenancyByDomain;
 use Stancl\Tenancy\Middleware\PreventAccessFromCentralDomains;
 
@@ -23,8 +24,14 @@ Route::middleware([
     'api',
     InitializeTenancyByDomain::class,
     PreventAccessFromCentralDomains::class,
-])->prefix('api')->group(function () {
-    Route::get('/tenant-status', function () {
+])->prefix('tenant-api')->group(function () {
+    Route::get('/status', function () {
         return response()->json(['status' => 'Tenant API is working'], 200);
     });
+
+    Route::post('/login', [AuthController::class, 'login']);
+
+    Route::get('/users', function () {
+        return response()->json(User::all(), 200);
+    })->middleware('auth:sanctum');
 });

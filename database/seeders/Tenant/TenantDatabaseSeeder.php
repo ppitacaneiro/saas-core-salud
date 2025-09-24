@@ -21,5 +21,11 @@ class TenantDatabaseSeeder extends Seeder
     {
         $adminSeeder = new AdminTenantSeeder($this->data['email'], $this->data['password']);
         $adminSeeder->run();
+
+        // faker data seeders
+        $this->call([
+            PatientSeeder::class,
+            // Add other tenant-specific seeders here
+        ]);
     }
 }

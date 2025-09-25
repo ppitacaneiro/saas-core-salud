@@ -23,9 +23,11 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Admin User',
             'email' => 'admin@example.com',
-            'password' => bcrypt('Abc1234.'), // Ensure to hash the password
+            'password' => bcrypt('Abc1234.')
         ]);
 
         $this->call(ComunitySeeder::class);
+        $this->call(ProvinceSeeder::class);
+        $this->call(MunicipalitySeeder::class);
     }
 }

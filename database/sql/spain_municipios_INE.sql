@@ -1,14 +1,4 @@
-CREATE TABLE `municipios` (
-  `id_municipio` smallint(6) unsigned NOT NULL AUTO_INCREMENT,
-  `id_provincia` smallint(6) NOT NULL,
-  `cod_municipio` int(11) NOT NULL COMMENT 'Código de muncipio DENTRO de la provincia, campo no único',
-  `DC` int(11) NOT NULL COMMENT 'Digito Control. El INE no revela cómo se calcula, secreto nuclear.',
-  `nombre` varchar(100) NOT NULL DEFAULT '',
-  PRIMARY KEY (`id_municipio`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-
-INSERT INTO `municipios` (`id_provincia`, `cod_municipio`, `DC`, `nombre`)
+INSERT INTO `municipalities` (`province_id`, `cod_municipality`, `DC`, `name`)
 VALUES
 	(1,1,4,'Alegría-Dulantzi'),
 	(2,1,9,'Abengibre'),

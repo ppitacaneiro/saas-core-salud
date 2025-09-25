@@ -25,7 +25,7 @@ class TenantService
 
         $baseDomain = config('tenancy.base_domain');
         try {
-            $tenant = $this->repository->createTenant($slug);
+            $tenant = $this->repository->createTenant($slug, $dto);
             $domain = "{$tenant->id}.{$baseDomain}";
             $this->repository->addDomain($tenant, $domain);
             \App\Jobs\InitializeTenantJob::dispatch($dto, $tenant);

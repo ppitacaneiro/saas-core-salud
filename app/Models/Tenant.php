@@ -11,28 +11,22 @@ class Tenant extends BaseTenant implements TenantWithDatabase
 {
     use HasDatabase, HasDomains;
 
-    protected $fillable = [
-        'id',
-        'name',
-        'contact_email',
-        'phone',
-        'address',
-        'province_id',
-        'municipality_id',
-        'is_active',
-        'subscription_start_date',
-        'subscription_end_date',
-        'trial_ends_at',
-        'data',
-    ];
-
-    protected $casts = [
-        'data' => 'array',
-        'is_active' => 'boolean',
-        'subscription_start_date' => 'date',
-        'subscription_end_date' => 'date',
-        'trial_ends_at' => 'date',
-    ];
+    public static function getCustomColumns(): array
+    {
+        return [
+            'id',
+            'name',
+            'contact_email',
+            'phone',
+            'address',
+            'province_id',
+            'municipality_id',
+            'is_active',
+            'subscription_start_date',
+            'subscription_end_date',
+            'trial_ends_at',
+        ];
+    }
 
     public function province()
     {

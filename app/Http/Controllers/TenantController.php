@@ -20,7 +20,7 @@ class TenantController extends Controller
 
     public function store(StoreTenantRequest $request)
     {
-        $dto = TenantData::fromRequest($request->validated());
+        $dto = TenantData::fromRequest($request->all());
         $tenant = $this->service->createTenant($dto);
 
         return response()->json($tenant, 201);

@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Comunity extends Model
+class Community extends Model
 {
     protected $table = 'comunities';
 
@@ -15,6 +15,6 @@ class Comunity extends Model
 
     public function provinces()
     {
-        return $this->hasMany(Province::class, 'comunity_id');
+        return $this->hasMany(Province::class, 'community_id');
     }
 }

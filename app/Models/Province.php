@@ -16,7 +16,7 @@ class Province extends Model
 
     public function community()
     {
-        return $this->belongsTo(Comunity::class, 'comunity_id');
+        return $this->belongsTo(Community::class, 'comunity_id');
     }
 
     public function municipalities()

@@ -1,16 +1,4 @@
-# ************************************************************
-# Comunidades Autónomas.
-#
-# Albert Lombarte
-# Twitter: @alombarte
-# ------------------------------------------------------------
-
-CREATE TABLE `comunidades` (
-  `id_comunidad` tinyint(4) NOT NULL,
-  `nombre` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-INSERT INTO `comunidades` (`id_comunidad`, `nombre`)
+INSERT INTO `comunities` (`id`, `name`)
 VALUES
 	(1,'Andalucía'),
 	(2,'Aragón'),

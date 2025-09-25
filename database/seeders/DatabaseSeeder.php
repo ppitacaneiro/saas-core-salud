@@ -25,5 +25,7 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@example.com',
             'password' => bcrypt('Abc1234.'), // Ensure to hash the password
         ]);
+
+        $this->call(ComunitySeeder::class);
     }
 }

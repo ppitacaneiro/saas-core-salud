@@ -16,8 +16,6 @@ class ComunitySeeder extends Seeder
         try {
             $sql = file_get_contents(database_path('sql/spain_comunidades_autonomas.sql'));
             DB::unprepared($sql);
-
-            $this->command->info('Comunities seeded!');
         } catch (\Exception $e) {
             $this->command->error('Error seeding comunities: ' . $e->getMessage());
         }

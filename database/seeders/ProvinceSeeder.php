@@ -16,7 +16,6 @@ class ProvinceSeeder extends Seeder
         try {
             $sql = file_get_contents(database_path('sql/spain_provincias.sql'));
             DB::unprepared($sql);
-            $this->command->info('Provinces table seeded!');
         } catch (\Exception $e) {
             $this->command->error('Error seeding Provinces table: ' . $e->getMessage());
         }

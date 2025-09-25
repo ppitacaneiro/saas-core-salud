@@ -17,7 +17,7 @@ class MunicipalitySeeder extends Seeder
             $sql = file_get_contents(database_path('sql/spain_municipios_INE.sql'));
             DB::unprepared($sql);
         } catch (\Exception $e) {
-            echo "Error seeding municipalities: " . $e->getMessage();
+            $this->command->error('Error seeding municipalities: ' . $e->getMessage());
         }
     }
 }

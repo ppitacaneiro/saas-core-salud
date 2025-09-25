@@ -23,6 +23,7 @@ class CreateTenantsTable extends Migration
             $table->string('address')->nullable();
             $table->foreignId('province_id')->nullable()->constrained('provinces')->nullOnDelete();
             $table->foreignId('municipality_id')->nullable()->constrained('municipalities')->nullOnDelete();
+            $table->string('postal_code')->nullable();
             $table->boolean('is_active')->default(true);
             $table->foreignId('plan_id')->nullable()->constrained('plans')->nullOnDelete();
             $table->date('subscription_start_date')->nullable();

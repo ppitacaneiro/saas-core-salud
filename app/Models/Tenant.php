@@ -21,6 +21,8 @@ class Tenant extends BaseTenant implements TenantWithDatabase
             'address',
             'province_id',
             'municipality_id',
+            'postal_code',
+            'plan_id',
             'is_active',
             'subscription_start_date',
             'subscription_end_date',

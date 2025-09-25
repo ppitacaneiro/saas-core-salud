@@ -13,12 +13,12 @@ class Province extends Model
     protected $fillable = [
         'id',
         'name',
-        'comunity_id',
+        'community_id',
     ];
 
     public function community()
     {
-        return $this->belongsTo(Community::class, 'comunity_id');
+        return $this->belongsTo(Community::class, 'community_id');
     }
 
     public function municipalities()

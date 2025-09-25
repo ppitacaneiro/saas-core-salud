@@ -15,6 +15,7 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\Interfaces\ITenantRepository::class => \App\Repositories\TenantRepository::class,
             \App\Repositories\Interfaces\IUserRepository::class => \App\Repositories\UserRepository::class,
             \App\Repositories\Tenant\Interfaces\IPatientRepository::class => \App\Repositories\Tenant\PatientRepository::class,
+            \App\Repositories\Interfaces\ICentralLocationRepository::class => \App\Repositories\CentralLocationRepository::class,
         ];
 
         foreach ($repositories as $interface => $implementation) {

@@ -1,4 +1,4 @@
-INSERT INTO `provinces` (`id`, `name`, `comunity_id`)
+INSERT INTO `provinces` (`id`, `name`, `community_id`)
 VALUES
 	(2,'Albacete',8),
 	(3,'Alicante/Alacant',10),

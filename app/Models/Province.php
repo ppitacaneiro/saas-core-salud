@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Province extends Model
 {
+    protected $connection = 'central';
+
     protected $table = 'provinces';
 
     protected $fillable = [

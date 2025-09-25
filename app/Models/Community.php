@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class Community extends Model
 {
+    protected $connection = 'central';
+
     protected $table = 'comunities';
 
     protected $fillable = [

@@ -26,6 +26,7 @@ class TenantDatabaseSeeder extends Seeder
         $this->call([
             PatientSeeder::class,
             AllergySeeder::class,
+            MedicationSeeder::class,
             // Add other tenant-specific seeders here
         ]);
     }

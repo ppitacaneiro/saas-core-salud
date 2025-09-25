@@ -4,6 +4,7 @@ namespace App\Models\Tenant;
 
 use App\Models\Province;
 use App\Models\Municipality;
+use App\Models\Tenant\Medication;
 use App\Models\Tenant\Allergy;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -41,5 +42,15 @@ class Patient extends Model
     public function allergies()
     {
         return $this->hasMany(Allergy::class);
+    }
+
+    public function medications()
+    {
+        return $this->hasMany(Medication::class);
+    }
+
+    public function appointments()
+    {
+        return $this->hasMany(Appointment::class);
     }
 }

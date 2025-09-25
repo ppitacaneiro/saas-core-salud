@@ -20,4 +20,9 @@ class Municipality extends Model
     {
         return $this->belongsTo(Province::class, 'province_id');
     }
+
+    public function tenants()
+    {
+        return $this->hasMany(Tenant::class, 'municipality_id');
+    }
 }

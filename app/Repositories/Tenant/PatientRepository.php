@@ -9,7 +9,7 @@ class PatientRepository implements IPatientRepository
 {
     public function query()
     {
-        return Patient::query();
+        return Patient::with('allergies')->newQuery();
     }
 
     public function all()

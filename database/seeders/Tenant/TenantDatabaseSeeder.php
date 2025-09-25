@@ -25,6 +25,7 @@ class TenantDatabaseSeeder extends Seeder
         // faker data seeders
         $this->call([
             PatientSeeder::class,
+            AllergySeeder::class,
             // Add other tenant-specific seeders here
         ]);
     }

@@ -28,6 +28,7 @@ class TenantDatabaseSeeder extends Seeder
             AllergySeeder::class,
             MedicationSeeder::class,
             SpecialitySeeder::class,
+            ProfessionalSeeder::class,
             // Add other tenant-specific seeders here
         ]);
     }

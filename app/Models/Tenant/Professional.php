@@ -3,9 +3,12 @@
 namespace App\Models\Tenant;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Professional extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'first_name',
         'last_name',

@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories\tenant;
+namespace Database\Factories\Tenant;
 
 use App\Models\Tenant\Allergy;
 use Illuminate\Database\Eloquent\Factories\Factory;

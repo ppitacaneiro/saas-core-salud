@@ -1,6 +1,6 @@
 <?php
 
-namespace Database\Factories\tenant;
+namespace Database\Factories\Tenant;
 
 use App\Models\Province;
 use App\Models\Municipality;

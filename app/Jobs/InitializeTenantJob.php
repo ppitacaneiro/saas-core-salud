@@ -4,6 +4,8 @@ namespace App\Jobs;
 
 use App\Models\Tenant;
 use App\Http\DTOs\TenantData;
+use Exception;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Foundation\Queue\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -29,17 +31,26 @@ class InitializeTenantJob implements ShouldQueue
      */
     public function handle(): void
     {
-        $this->tenant->run(function () {
-            Artisan::call('migrate', [
-                '--path' => 'database/migrations/tenant',
-                '--force' => true,
-            ]);
+        try {
+            $this->tenant->run(function () {
+                Artisan::call('migrate', [
+                    '--path' => 'database/migrations/tenant',
+                    '--force' => true,
+                ]);
 
-            $seeder = new \Database\Seeders\Tenant\TenantDatabaseSeeder([
-                'email' => $this->dto->adminEmail,
-                'password' => $this->dto->adminPassword,
-            ]);
-            $seeder->run();
-        });
+                $seeder = new \Database\Seeders\Tenant\TenantDatabaseSeeder([
+                    'email' => $this->dto->adminEmail,
+                    'password' => $this->dto->adminPassword,
+                ]);
+                $seeder->run();
+            });
+        } catch (\Exception $e) {
+            throw new \Exception("Error al inicializar el tenant: {$e->getMessage()}");
+        }
+    }
+
+    public function failed(Exception $exception): void
+    {
+        Log::info("El job InitializeTenantJob ha fallado: {$exception->getMessage()}");
     }
 }

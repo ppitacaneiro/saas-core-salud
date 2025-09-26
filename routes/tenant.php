@@ -34,5 +34,6 @@ Route::middleware([
     Route::prefix('patients')->middleware('auth:sanctum')->group(function () {
         Route::get('/', [PatientController::class, 'index']);
         Route::get('/paginate', [PatientController::class, 'paginate']);
+        Route::post('/', [PatientController::class, 'store']);
     });
 });

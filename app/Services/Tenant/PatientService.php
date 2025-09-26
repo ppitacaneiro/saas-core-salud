@@ -2,6 +2,7 @@
 
 namespace App\Services\Tenant;
 
+use App\Http\DTOs\PatientData;
 use App\Repositories\Tenant\Interfaces\IPatientRepository;
 
 class PatientService
@@ -21,5 +22,10 @@ class PatientService
     public function getPaginatedPatients(int $perPage = 15)
     {
         return $this->patientRepository->paginate($perPage);
+    }
+
+    public function createPatient(PatientData $data)
+    {
+        return $this->patientRepository->create($data);
     }
 }

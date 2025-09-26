@@ -2,6 +2,7 @@
 
 namespace App\Repositories\Tenant;
 
+use App\Http\DTOs\PatientData;
 use App\Models\Tenant\Patient;
 use App\Repositories\Tenant\Interfaces\IPatientRepository;
 
@@ -22,5 +23,10 @@ class PatientRepository implements IPatientRepository
         $query = $this->query();
 
         return $query->paginate($perPage);
+    }
+
+    public function create(PatientData $data)
+    {
+        return Patient::create($data->toArray());
     }
 }

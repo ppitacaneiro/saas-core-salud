@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers\Tenant;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\DTOs\PatientData;
+use App\Http\Requests\PatientStoreRequest;
 
 class PatientController extends Controller
 {
@@ -29,5 +31,16 @@ class PatientController extends Controller
             'message' => 'Paginated patients retrieved successfully',
             'data' => $paginatedPatients
         ], 200);
+    }
+
+    public function store(PatientStoreRequest $request)
+    {
+        $data = PatientData::fromRequest($request->all());
+        $patient = $this->patientService->createPatient($data);
+
+        return response()->json([
+            'message' => 'Patient created successfully',
+            'data' => $patient
+        ], 201);
     }
 }

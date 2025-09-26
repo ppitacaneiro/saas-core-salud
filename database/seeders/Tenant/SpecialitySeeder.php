@@ -3,6 +3,7 @@
 namespace Database\Seeders\Tenant;
 
 use Illuminate\Database\Seeder;
+use App\Models\Tenant\Speciality;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
@@ -13,7 +14,6 @@ class SpecialitySeeder extends Seeder
      */
     public function run(): void
     {
-        \App\Models\Tenant\Speciality::factory()->count(10)->create();
-        Log::info('Specialities seeded');
+        $specialities = Speciality::factory()->count(10)->create();
     }
 }
